@@ -7,12 +7,15 @@ export async function middleware(req: NextRequest) {
     const response = NextResponse.next();
     const edgeConfig = await get("demo");
     console.log("Edge Config", edgeConfig);
-    edgeConfig && response.headers.append("Edge-Config", edgeConfig.toString());
+    const {mac, requireCaptcha = false } = edgeConfig as {mac: string, requireCaptcha: boolean};
+    mac && response.headers.append("edge-config", mac.toString());
+    response.headers.append("require-captcha", requireCaptcha.toString());
     return response;
     }
 
     export const config = {
      matcher: [
         "/secret/",
+        "/"
     ]
     };
