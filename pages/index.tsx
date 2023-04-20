@@ -32,7 +32,7 @@ export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main + ' flex flex-col items-center'}>
+      <main className={styles.main + ' flex flex-col items-center bg-black'}>
         <div>
           <h1 className='text-5xl font-extrabold'>Vercel Edge Config Demo</h1>
           
@@ -42,10 +42,10 @@ export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
         </div>
 
         <div >
-          {requireCaptcha && <ReCAPTCHA
+          {requireCaptcha && <ReCAPTCHA className='bg-black'
             sitekey="6LdeiaIlAAAAACF7MRV7Fl6QFiTM_A-XGZ-sgH4C"
             onChange={onChange}
-            theme='dark'
+            theme='light'
           />}
         </div>
 
