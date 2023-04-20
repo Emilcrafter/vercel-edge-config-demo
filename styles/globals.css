@@ -11,9 +11,12 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+h1 {
+  color: black;
+  text-align: center;
+  margin-top: -200px;
 }
+
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -21,6 +24,6 @@ a {
   }
   body {
     color: white;
-    background: black;
+    background: white;
   }
 }
