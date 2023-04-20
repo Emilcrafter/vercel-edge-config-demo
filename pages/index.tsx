@@ -22,8 +22,6 @@ export const getServerSideProps : GetServerSideProps = async ({req}) => {
 
 
 export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
-  console.log(typeof requireCaptcha)
-  console.log(requireCaptcha)
   return(
     <div>
       <Head>
@@ -42,7 +40,8 @@ export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
         </div>
 
         <div >
-          {requireCaptcha && <ReCAPTCHA className='bg-black'
+          {requireCaptcha && <ReCAPTCHA 
+            className='bg-black'
             sitekey="6LdeiaIlAAAAACF7MRV7Fl6QFiTM_A-XGZ-sgH4C"
             onChange={onChange}
             theme='light'
