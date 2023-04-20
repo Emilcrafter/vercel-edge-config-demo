@@ -5,6 +5,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { get } from '@vercel/edge-config';
+import QRCode from 'react-qr-code';
 
 function onChange(value : any) {
   console.log("Captcha value:", value);
@@ -14,16 +16,25 @@ function onChange(value : any) {
 
 export const getServerSideProps : GetServerSideProps = async ({req}) => {
   const requireCaptcha = req.headers['require-captcha'];
-  
+  console.time("qr");
+  const {qrcode} = await get("demo") as {qrcode: string};
+  console.timeEnd("qr")
   return {
     props:{
-       requireCaptcha: requireCaptcha === "true"
+       requireCaptcha: requireCaptcha === "true",
+       qrCodeContents: qrcode
     }
   }
 }
 
 
-export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
+export default function Home({
+  requireCaptcha,
+  qrCodeContents
+} : {
+  requireCaptcha: boolean,
+  qrCodeContents: string
+}) {
   return(
     <div>
       <Head>
@@ -37,6 +48,10 @@ export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
           <h1 className='text-5xl font-extrabold'>Vercel Edge Config Demo</h1>
           
         </div>
+        <QRCode 
+        value={qrCodeContents}
+        size={256}
+        />
         <div className='flex justify-center'>
           <p className='text-white text-2xl py-10 font-bold'> {requireCaptcha ? "Please verify yourself:" : "Welcome to our fine website!"}</p>
         </div>
