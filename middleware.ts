@@ -11,7 +11,7 @@ export async function middleware(req: NextRequest) {
     const {mac, requireCaptcha = false } = edgeConfig as {mac: string, requireCaptcha: boolean};
     const hasDoneCaptcha = req.cookies.get("captcha")?.value === "true";
 
-    let stillNeedCaptcha = false;
+    let stillNeedCaptcha = requireCaptcha;
 
     if(!hasDoneCaptcha && requireCaptcha && req.nextUrl.pathname.match(/\/secret(\/.*)?/)) {
         console.log("Redirecting to captcha");
