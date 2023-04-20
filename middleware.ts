@@ -6,7 +6,9 @@ import { NextURL } from "next/dist/server/web/next-url";
 export async function middleware(req: NextRequest) {
     console.log("Middleware called");
     const response = NextResponse.next();
+    console.time("middleware");
     const edgeConfig = await get("demo");
+    console.timeEnd("middleware");
     
     const {mac, requireCaptcha = false } = edgeConfig as {mac: string, requireCaptcha: boolean};
     const hasDoneCaptcha = req.cookies.get("captcha")?.value === "true";
@@ -19,11 +21,7 @@ export async function middleware(req: NextRequest) {
         newResponse.headers.append("require-captcha", stillNeedCaptcha.toString());
         return newResponse;
     }
-    if(hasDoneCaptcha) {
-        stillNeedCaptcha = false;
-    }
-    console.log("Setting edge-config header");
-    console.log(stillNeedCaptcha, requireCaptcha, hasDoneCaptcha)
+
     mac && response.headers.append("edge-config", mac.toString());
     response.headers.append("require-captcha", stillNeedCaptcha.toString());
 
