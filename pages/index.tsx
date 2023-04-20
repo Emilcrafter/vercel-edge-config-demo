@@ -4,10 +4,12 @@ import styles from '../styles/Home.module.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
 function onChange(value : any) {
   console.log("Captcha value:", value);
-  document.cookie = "captcha=true"
+  document.cookie = "captcha=true";
+  location.reload()
 }
 
 export const getServerSideProps : GetServerSideProps = async ({req}) => {
