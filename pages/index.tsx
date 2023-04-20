@@ -34,24 +34,25 @@ export default function Home({requireCaptcha} : {requireCaptcha: boolean}) {
 
       <main className={styles.main + ' flex flex-col items-center'}>
         <div>
-          <h1 className='text-5xl'>Vercel Edge Config Demo</h1>
+          <h1 className='text-5xl font-extrabold'>Vercel Edge Config Demo</h1>
           
         </div>
         <div className='flex justify-center'>
-          <p className='text-black text-2xl py-10'> {requireCaptcha ? "Please verify yourself:" : "Welcome to our fine website!"}</p>
+          <p className='text-white text-2xl py-10 font-bold'> {requireCaptcha ? "Please verify yourself:" : "Welcome to our fine website!"}</p>
         </div>
 
         <div >
           {requireCaptcha && <ReCAPTCHA
             sitekey="6LdeiaIlAAAAACF7MRV7Fl6QFiTM_A-XGZ-sgH4C"
             onChange={onChange}
+            theme='dark'
           />}
         </div>
 
         <div className='flex items-center flex-row w-screen px-60 h-14 mt-20 justify-around'>
-          <Link className='flex flex-row items-center justify-center bg-green-500 hover:bg-green-800 h-full w-60 rounded-3xl' href={"secret"}> Go to Page 1</Link>
-          <Link className='flex flex-row items-center justify-center bg-blue-500 hover:bg-blue-800 h-full w-60 rounded-3xl'  href={'secret/2'}> Go to Page 2</Link>
-          <Link className='flex flex-row items-center justify-center bg-red-500 hover:bg-red-800 h-full w-60 rounded-3xl' href={'secret/3'}> Go to Page 3</Link>
+          <Link className='flex flex-row items-center justify-center bg-green-300 hover:bg-green-800 hover:text-white h-full w-60 rounded-3xl text-black' href={"secret/1"}> Go to Page 1</Link>
+          <Link className='flex flex-row items-center justify-center bg-blue-300 hover:bg-blue-800 hover:text-white h-full w-60 rounded-3xl text-black'  href={'secret/2'}> Go to Page 2</Link>
+          <Link className='flex flex-row items-center justify-center bg-red-300 hover:bg-red-800 hover:text-white h-full w-60 rounded-3xl text-black' href={'secret/3'}> Go to Page 3</Link>
         </div>
         
       </main>

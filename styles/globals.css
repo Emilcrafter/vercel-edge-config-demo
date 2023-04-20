@@ -18,7 +18,7 @@ a {
 }
 
 h1 {
-  color: black;
+  color: white;
   text-align: center;
   margin-top: -120px;
 }
@@ -31,6 +31,6 @@ h1 {
   }
   body {
     color: white;
-    background: white;
+    background: black;
   }
 }
