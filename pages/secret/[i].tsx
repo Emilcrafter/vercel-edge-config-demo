@@ -19,7 +19,7 @@ export default function page({i} : {i?: number}){
 
 
     return( 
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen bg-black flex justify-center items-center">
         <div className="flex-col justify-center items-center">
             <p className="text-7xl text-white pb-32 font-bold">Welcome to page {i}!</p>
             <div className="justify-center items-center flex">
