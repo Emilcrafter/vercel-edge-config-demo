@@ -20,6 +20,9 @@ export async function middleware(req: NextRequest) {
         newResponse.headers.append("require-captcha", stillNeedCaptcha.toString());
         return newResponse;
     }
+    if(hasDoneCaptcha) {
+        stillNeedCaptcha = false;
+    }
     mac && response.headers.append("edge-config", mac.toString());
     response.headers.append("require-captcha", stillNeedCaptcha.toString());
 
