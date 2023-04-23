@@ -9,13 +9,13 @@ export async function middleware(req: NextRequest) {
     console.log("Middleware called");
     const response = NextResponse.next();
 
-    console.time("middleware");
+    console.time("Get config in middleware");
     const edgeConfig = await get("demo");
-    console.timeEnd("middleware");
+    console.timeEnd("Get config in middleware");
 
-    console.time("fetch file");
+    console.time("Fetch file from AWS S3");
     const staticFile = await fetch("https://apartly-ab-image-bucket.s3.eu-north-1.amazonaws.com/config.json")
-    console.timeEnd("fetch file");
+    console.timeEnd("Fetch file from AWS S3");
 
     const {requireCaptcha = false } = edgeConfig as {requireCaptcha: boolean};
     const hasDoneCaptcha = req.cookies.get("captcha")?.value === "true";

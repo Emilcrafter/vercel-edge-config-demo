@@ -16,9 +16,9 @@ function onChange(value : any) {
 
 export const getServerSideProps : GetServerSideProps = async ({req}) => {
   const requireCaptcha = req.headers['require-captcha'];
-  console.time("qr");
+  console.time("Get Config for QR Code");
   const {qrcode} = await get("demo") as {qrcode: string};
-  console.timeEnd("qr")
+  console.timeEnd("Get Config for QR Code")
   return {
     props:{
        requireCaptcha: requireCaptcha === "true",
