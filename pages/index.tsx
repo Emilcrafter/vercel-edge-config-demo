@@ -65,10 +65,10 @@ export default function Home({
           />}
         </div>
 
-        <div className='flex items-center flex-row w-screen px-60 h-14 mt-20 justify-around'>
-          <Link className='flex flex-row items-center justify-center bg-green-300 hover:bg-green-800 hover:text-white h-full w-60 rounded-3xl text-black' href={"secret/1"}> {requireCaptcha ? "This page is locked" : "Go to Page 1"}</Link>
-          <Link className='flex flex-row items-center justify-center bg-blue-300 hover:bg-blue-800 hover:text-white h-full w-60 rounded-3xl text-black'  href={'secret/2'}> {requireCaptcha ? "This page is locked" : "Go to Page 2"}</Link>
-          <Link className='flex flex-row items-center justify-center bg-red-300 hover:bg-red-800 hover:text-white h-full w-60 rounded-3xl text-black' href={'secret/3'}> {requireCaptcha ? "This page is locked" : "Go to Page 3"}</Link>
+        <div className='flex items-center flex-col pt-6 md:pt-0 gap-y-6 md:gap-y-0 md:flex-row w-screen md:px-60 h-14 mt-20 justify-around'>
+          <Link className='flex flex-row py-5 md:py-0 items-center justify-center bg-green-300 hover:bg-green-800 hover:text-white h-full w-60 rounded-3xl text-black' href={"secret/1"}> {requireCaptcha ? "This page is locked" : "Go to Page 1"}</Link>
+          <Link className='flex flex-row py-5 md:py-0 items-center justify-center bg-blue-300 hover:bg-blue-800 hover:text-white h-full w-60 rounded-3xl text-black'  href={'secret/2'}> {requireCaptcha ? "This page is locked" : "Go to Page 2"}</Link>
+          <Link className='flex flex-row py-5 md:py-0 items-center justify-center bg-red-300 hover:bg-red-800 hover:text-white h-full w-60 rounded-3xl text-black' href={'secret/3'}> {requireCaptcha ? "This page is locked" : "Go to Page 3"}</Link>
         </div>
         
       </main>
