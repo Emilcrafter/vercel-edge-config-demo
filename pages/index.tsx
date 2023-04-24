@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/router';
 import { get } from '@vercel/edge-config';
 import QRCode from 'react-qr-code';
 
@@ -16,13 +14,16 @@ function onChange(value : any) {
 
 export const getServerSideProps : GetServerSideProps = async ({req}) => {
   const requireCaptcha = req.headers['require-captcha'];
+  console.log(req.headers)
+  const baseUrl = req.headers.host && `https://${req.headers.host}` || "";
   console.time("Get Config for QR Code");
   const {qrcode} = await get("demo") as {qrcode: string};
+  const hasUrl = qrcode.match(/https?:\/\//) !== null;
   console.timeEnd("Get Config for QR Code")
   return {
     props:{
        requireCaptcha: requireCaptcha === "true",
-       qrCodeContents: qrcode
+       qrCodeContents: hasUrl ? qrcode : baseUrl + qrcode
     }
   }
 }
