@@ -4,7 +4,7 @@ import {EdgeConfigItems, EdgeConfigValue, get} from '@vercel/edge-config'
 import { NextURL } from "next/dist/server/web/next-url";
 
 async function handleQr(req : NextRequest, config : EdgeConfigValue){
-    const colors = ["red", "green", "blue", "yellow", "pink"];
+    const colors = ["red", "green", "blue", "yellow"];
 
     const color = colors[Math.floor(Math.random() * colors.length)];
 
