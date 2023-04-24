@@ -8,7 +8,9 @@ async function handleQr(req : NextRequest, config : EdgeConfigValue){
 
     const color = colors[Math.floor(Math.random() * colors.length)];
 
-    const response = (config as {redirectQr?: boolean}).redirectQr ? NextResponse.redirect(new NextURL(`/color/${color}`, req.nextUrl)) : NextResponse.next();
+    const response = (config as {redirectQr?: boolean}).redirectQr ? 
+    NextResponse.redirect(new NextURL(`/color/${color}`, req.nextUrl)) : 
+    NextResponse.redirect(new NextURL(`/`, req.nextUrl));
 
     return response;
     
